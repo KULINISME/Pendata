@@ -14,7 +14,7 @@ Inkonsistensi terjadi ketika format penulisan data tidak seragam. Contohnya perb
 Terkadang tipe data tidak sesuai dengan seharusnya, misalnya angka tersimpan sebagai teks (string). Hal ini dapat menghambat proses perhitungan statistik atau pemodelan. Pada tahap ini dilakukan pengecekan agar setiap atribut memiliki tipe data yang benar sesuai kebutuhan analisis.
 
 # Kesimpulan
-```{figure} ../image/Kesimpulan.png
+```{figure} {{ "/image/Kesimpulan.png" | relative_url }}
 ---
 width: 60%
 align: center
