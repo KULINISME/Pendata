@@ -37,6 +37,8 @@ jobs:
           pip install jupyter-book==1.0.0
           pip install pandas
           pip install scipy
+          pip install scikit-learn
+          pip install matplotlib
       - name: Build HTML Assets
         run: jupyter-book build .
       - name: Upload artifact
