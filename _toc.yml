@@ -11,4 +11,12 @@ chapters:
     - file: data_understanding/data_description
     - file: data_understanding/data_exploration
     - file: data_understanding/data_quality 
+    - file: data_understanding/data_distance
+      sections:
+      - file: data_understanding/numerik
+      - file: data_understanding/nominal
+      - file: data_understanding/ordinal
+      - file: data_understanding/binary
+      - file: data_understanding/iris
+
 - file: data_preparation

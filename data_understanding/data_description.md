@@ -28,12 +28,18 @@ Berikut adalah tujuan Data Description (Describe Data):
 7. Menjadi dasar untuk tahap eksplorasi dan persiapan data selanjutnya.
 
 # Studi Kasus
-Pada iris flower datasets didapatkan 5 attribute, sebagai berikut:
+Pada iris flower datasets didapatkan 4 attribute, sebagai berikut:
 1. sepal_length(numerik)
 2. sepal_width(numerik)
 3. petal_length(numerik)
 4. petal_width(numerik)
-5. species(kategori)
+
+Lalu adapun class atau label
+species(kategori),dan pada class species ini terbagi menjadi 3,yaitu:
+1. Iris-setosa 50 Data
+2. Iris-versicolor 50 Data
+3. Iris-virginica 50 Data
+
 
 ![Grafik Data](../image/datadesc.PNG)
 
