@@ -19,6 +19,10 @@ Atribut binary adalah atribut yang hanya memiliki dua kemungkinan nilai,ciri-cir
 - dikodekan 1 atau 0
 - Tidak memiliki nilai tengah
 
+$$Distance = |X_{S1000} - X_{S1001}| + |Y_{S1000} - Y_{S1001}|$$ 
+
+![Ecludian](../image/binary.PNG)
+
 ```{code-cell} 
 import pandas as pd
 import numpy as np
@@ -28,37 +32,34 @@ df.head(5)
 
 ```{code-cell} 
 import pandas as pd
-import numpy as np
+from sklearn.metrics import pairwise_distances
 
-# Load dataset
-df = pd.read_csv("../student_habits_performance.csv")
+# 1. Menyiapkan Data sesuai gambar
+data = {
+    'student_id': ['S1000', 'S1001'],
+    'curricular_particip': ['Yes', 'No'],
+    'part_time_job': ['No', 'No']
+}
 
-# Ambil dua mahasiswa
-s1000 = df[df['student_id'] == 'S1000']
-s1001 = df[df['student_id'] == 'S1001']
+# Menjadikan student_id sebagai index
+df = pd.DataFrame(data).set_index('student_id')
 
-# Tentukan kolom binary
-binary_cols = ['part_time_job']  # tambahkan jika ada
+print("Selected Data: student_habits_performance_testing")
+print(df)
+print("\n")
 
-# Konversi Yes/No ke 1/0
-mapping = {'Yes': 1, 'No': 0}
+# 2. Mengubah nilai biner (Yes/No) menjadi angka (1/0)
+df_numeric = df.replace({'Yes': 1, 'No': 0})
 
-x = s1000[binary_cols].replace(mapping).astype(int).values[0]
-y = s1001[binary_cols].replace(mapping).astype(int).values[0]
+# 3. Menghitung jarak (menggunakan manhattan distance untuk menghitung selisih)
+dist_matrix = pairwise_distances(df_numeric, metric='manhattan')
 
-# Hitung a, b, c
-a = np.sum((x == 1) & (y == 1))
-b = np.sum((x == 1) & (y == 0))
-c = np.sum((x == 0) & (y == 1))
+# 4. Membuat DataFrame untuk Matriks Jarak
+df_dist = pd.DataFrame(dist_matrix, index=df.index, columns=df.index)
 
-# Cegah pembagian nol
-if (a + b + c) == 0:
-    jaccard_distance = 0
-else:
-    jaccard_distance = (b + c) / (a + b + c)
+# Mengatur format tampilan Pandas agar menjadi 3 angka di belakang koma (1.000)
+pd.options.display.float_format = '{:.3f}'.format
 
-print("a (1,1):", a)
-print("b (1,0):", b)
-print("c (0,1):", c)
-print("Jaccard Distance:", jaccard_distance)
+print("Distances: 2x2 distance matrix")
+print(df_dist)
 ```

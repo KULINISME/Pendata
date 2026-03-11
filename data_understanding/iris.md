@@ -14,56 +14,78 @@ kernelspec:
 
 # IRIS 
 
+Pada kali ini akan menghitung jarak antara data 1 dan 2 pada datset IRIS 
+
 ```{code-cell} 
 import pandas as pd
 import numpy as np
 df = pd.read_csv("../IRIS.csv")
 df.head(5)
 ```
+Saya menggunakan metode Ecludian:
+
+$$
+\begin{aligned}
+d(\mathbf{p}, \mathbf{q}) &= \frac{1}{n} \sum_{i=1}^{n} \delta_i(p_i, q_i) \\[10pt]
+d(\mathbf{1}, \mathbf{2}) &= \frac{1}{5} \left( \frac{|5.1 - 4.9|}{3.6} + \frac{|3.5 - 3.0|}{2.4} + \frac{|1.4 - 1.4|}{5.9} + \frac{|0.2 - 0.2|}{2.4} + 0 \right) \\[10pt]
+d(\mathbf{1}, \mathbf{2}) &= \frac{1}{5} \left( \frac{0.2}{3.6} + \frac{0.5}{2.4} + 0 + 0 + 0 \right) \\[10pt]
+d(\mathbf{1}, \mathbf{2}) &= \frac{1}{5} (0.0555 + 0.2083 + 0 + 0 + 0) \\[10pt]
+d(\mathbf{1}, \mathbf{2}) &= \frac{0.2638}{5} = 0.05276
+\end{aligned}
+$$
+
+```{figure} ../image/ecludian_iris.PNG
+---
+width: 60%
+align: center
+---
+IRIS Metode Eckudian
+```
 
 ```{code-cell} 
 import pandas as pd
 import numpy as np
 
-kolom = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
-df = pd.read_csv('../IRIS.csv', names=kolom)
+# 1. Load dataset
+df = pd.read_csv("../IRIS.csv")
 
-kolom_numerik = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
-kolom_kategori = ['species']
+# 2. Ambil Data 1 (index 0) dan Data 2 (index 1)
+row1 = df.iloc[0]
+row2 = df.iloc[1]
 
-ranges = df[kolom_numerik].max() - df[kolom_numerik].min()
+print("--- Data 1 ---")
+print(row1.values)
+print("\n--- Data 2 ---")
+print(row2.values)
+print("-" * 30)
 
-def gower_distance(baris1, baris2, df_ranges):
-    total_jarak = 0
-    jumlah_kolom = len(kolom_numerik) + len(kolom_kategori)
-    
-    # Hitung jarak untuk kolom Numerik (Angka)
-    for col in kolom_numerik:
-        # Rumus: |x1 - x2| / Range
-        jarak_num = abs(baris1[col] - baris2[col]) / df_ranges[col]
-        total_jarak += jarak_num
-        
-    # Hitung jarak untuk kolom Kategorik (Teks/Spesies)
-    for col in kolom_kategori:
-        # Rumus: 0 jika sama, 1 jika beda
-        jarak_kat = 0 if baris1[col] == baris2[col] else 1
-        total_jarak += jarak_kat
-        
-    # Rata-ratakan jarak dari seluruh kolom
-    gower_dist = total_jarak / jumlah_kolom
-    return gower_dist
+# Menentukan kolom numerik
+num_cols = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
 
-bunga_1 = df.iloc[0]
+# 3. Hitung Range (Maksimum - Minimum) dari seluruh data untuk fitur numerik
+ranges = df[num_cols].max() - df[num_cols].min()
 
-bunga_2 = df.iloc[50]
+# List untuk menyimpan jarak masing-masing atribut
+gower_dists = []
 
-print("=== DATA BUNGA 1 ===")
-print(bunga_1.to_frame().T)
-print("\n=== DATA BUNGA 2 ===")
-print(bunga_2.to_frame().T)
+# 4. Hitung Jarak Atribut Numerik: |x1 - x2| / range
+for col in num_cols:
+    distance = abs(row1[col] - row2[col]) / ranges[col]
+    gower_dists.append(distance)
+    print(f"Jarak {col}: {distance:.4f}")
 
-# Memanggil fungsi perhitungan
-hasil_jarak = gower_distance(bunga_1, bunga_2, ranges)
+# 5. Hitung Jarak Atribut Kategorikal: 0 jika sama, 1 jika beda
+if row1['species'] == row2['species']:
+    cat_dist = 0
+else:
+    cat_dist = 1
 
-print(f"\n=> Jarak Campuran (Gower's Distance) antara Bunga 1 dan Bunga 2 adalah: {hasil_jarak:.4f}")
+gower_dists.append(cat_dist)
+print(f"Jarak species: {cat_dist}")
+
+# 6. Hitung Total Jarak Gower (Rata-rata dari semua jarak atribut)
+gower_distance = np.mean(gower_dists)
+
+print("-" * 30)
+print(f"Total Jarak Gower (Data 1 & Data 2): {gower_distance:.5f}")
 ```
