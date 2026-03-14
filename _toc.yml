@@ -19,4 +19,10 @@ chapters:
       - file: data_understanding/binary
       - file: data_understanding/iris
 
-- file: data_preparation
+- file: data_preparation/home
+  sections:
+    - file: data_preparation/normalisasi
+      sections:
+      - file: data_preparation/minmax
+      - file: data_preparation/z_score
+      - file: data_preparation/decimal_scaling
