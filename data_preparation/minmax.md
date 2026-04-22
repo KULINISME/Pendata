@@ -55,5 +55,21 @@ for col in cols_to_normalize:
     df[f'Norm_{col}'] = (df[col] - min_val) / (max_val - min_val)
 print(df)
 ```
+dengan versi yg berbeda yaitu menggunakan sklearn:
+```{code-cell} 
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+df = pd.DataFrame({
+    'id': [1, 2, 3, 4, 5, 6],
+    'IPK': [2, 3, 2, 3, 2, 3],
+    'PO': [200000, 300000, 200000, 200000, 300000, 400000],
+    'JML': [2, 3, 2, 3, 2, 3]
+})
+
+df[['IPK', 'PO', 'JML']] = MinMaxScaler().fit_transform(df[['IPK', 'PO', 'JML']])
+
+print(df)
+```
 
 di mana $\max_A$ dan $\min_A$ masing-masing adalah nilai atribut maksimum dan minimum yang asli.Dalam literatur, "normalisasi" biasanya mengacu pada kasus khusus dari normalisasi min-max di mana interval akhirnya adalah [0,1], yaitu $\text{new_min}_A = 0$ dan $\text{new_max}_A = 1$. Interval [-1,1] juga merupakan rentang yang umum digunakan saat menormalisasi data.Jenis normalisasi ini sangat umum ditemui pada himpunan data (data sets) yang dipersiapkan untuk digunakan dengan metode pembelajaran berbasis jarak (distance-based learning methods). Menggunakan normalisasi untuk menskalakan ulang semua data ke rentang nilai yang sama akan mencegah atribut yang memiliki selisih $\max_A - \min_A$ yang besar mendominasi atribut lain dalam perhitungan jarak. Jika tidak dinormalisasi, hal ini dapat menyesatkan proses pembelajaran karena algoritma akan memberikan bobot kepentingan yang lebih besar pada atribut dengan skala yang lebih besar tersebut. 

@@ -26,3 +26,4 @@ chapters:
       - file: data_preparation/z_score
       - file: data_preparation/decimal_scaling
 - file: tugas_wknn
+- file: UTS/home

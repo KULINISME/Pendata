@@ -96,35 +96,3 @@ print(df_stdev[['id', 'IPK', 'PO', 'JML']].round(6).to_string(index=False))
 print("\nTABEL KANAN: Normalisasi Z-Score Variasi MAD")
 print(df_mad[['id', 'IPK', 'PO', 'JML']].round(1).to_string(index=False))
 ```
-
-```{code-cell}
-import pandas as pd
-
-# 1. Menyiapkan data
-data = {
-    'id': [1, 2, 3, 4, 5, 6],
-    'IPK': [2, 3, 2, 3, 2, 3],
-    'PO': [200000, 300000, 200000, 200000, 300000, 400000],
-    'JML': [2, 3, 2, 3, 2, 3]
-}
-df = pd.DataFrame(data)
-
-# Kolom yang akan dinormalisasi
-kolom_target = ['IPK', 'PO', 'JML']
-
-# Membuat salinan data agar data asli tidak tertimpa
-df_variasi = df.copy()
-
-# 2. Proses Normalisasi Variasi MAD
-for col in kolom_target:
-    # Langkah A: Menghitung Rata-rata (Mean / AVERAGE)
-    rata_rata = df[col].mean()
-    
-    simpangan_mutlak = (df[col] - rata_rata).abs().mean()
-    
-    df_variasi[col] = (df[col] - rata_rata) / simpangan_mutlak
-
-# Menampilkan hasil dengan pembulatan 1 angka di belakang koma
-print("Hasil Normalisasi Z-Score Variasi (MAD / AVEDEV):")
-print(df_variasi[['id', 'IPK', 'PO', 'JML']].round(1).to_string(index=False))
-```

@@ -54,4 +54,22 @@ print(f"Data 2 ({row2['internet_quality']}): {val2}")
 print("-" * 30)
 print(f"Jarak Internet Quality: {dist_internet:.1f}")
 ```
+```{code-cell} 
+import pandas as pd
+
+df = pd.read_csv("student_habits_performance.csv")
+
+# 1. Definisikan urutan logis
+diet_mapping = {'Poor': 1, 'Fair': 2, 'Good': 3}
+
+# 2. Map ke angka (Rank)
+df['diet_rank'] = df['diet_quality'].map(diet_mapping)
+
+# 3. Normalisasi ke rentang 0 - 1
+M = 3 # Jumlah kategori
+df['diet_norm'] = (df['diet_rank'] - 1) / (M - 1)
+
+# Sekarang gunakan 'diet_norm' untuk perhitungan Jarak Gower/Euclidean
+print(df[['diet_quality', 'diet_norm']].head())
+```
 Pada tipe data ordinal saya transformasikan terlebih dahulu dari kolom internet_quality dan diet_quality diberi nilai untuk tiap inputnya Poor = 1, Fair = 2, dan Good = 3, lalu ketika sudah didapatkan bisa dihitung nilainya secara Ecludian dan Manhattan

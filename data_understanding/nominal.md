@@ -24,17 +24,3 @@ Lalu untuk contoh,sebagai berikut:
 Warna: Merah,Kuning,Hijau
 Jenis Kelamin: Pria dan Wanita
 
-```{code-cell} 
-import pandas as pd
-import numpy as np
-df = pd.read_csv("../student_habits_performance.csv")
-df.head(5)
-```
-
-Untuk dataset diakse sebagai berikut:[Kaggle Student Habits Dataset](https://www.kaggle.com/code/jayaantanaath/student-habits-vs-academic-performance-ml-90/notebook)
-
-
-```{code-cell} 
-df_numeric = df.select_dtypes(include=[np.number])
-print(df_numeric.dtypes)
-```
