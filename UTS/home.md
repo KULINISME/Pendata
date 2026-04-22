@@ -35,6 +35,8 @@ Dataset berisi 2.000 sampel data tanah dengan 10 fitur agronomis dan 1 kolom lab
 ### Data Numerik
 Sebelum menghitung jarak, Data harus dinormalisasikan agar data tetap seimbang dan skalanya tidak terlalu jauh, Untuk itu saya menggunakan Normalisasi MIn-Max
 
+![minmax](../image/Normalisasi.PNG)
+
 $$ v' = \frac{v - \min_A}{\max_A - \min_A} (\text{new_max}_A - \text{new_min}_A) + \text{new_min}_A $$
 
 Keterangan: <br>
@@ -70,4 +72,11 @@ Untuk melakukan Preoses analisa Data Kesuburan tanah saya menggunakan Software K
 | Scorer | Mengevaluasi hasil prediksi model | Matrik evaluasi dan confusion matrix |
 
 ### Scoring
+Untuk Scoring atau Hasil sebagai berikut:
+Gambar dibawah merupakan hasil dari confusion matrix pada dataset kesuburan tanah
+![Confusion](../image/Confusion.PNG) <br>
+
+![Accuracy](../image/Accuracy.PNG) <br>
+Gambar diatas hasil accuracy dengan perbandingan partisi 80:20
+
 
