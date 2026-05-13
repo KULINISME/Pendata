@@ -370,3 +370,5 @@ $$
 Berikut Hasil dari Tree:
 ![Confusion](image/tree.jpeg)
 ## Result
+Lalu untuk hasil didapatkan dengan prediction accuracynya adalah 1, sebagai berikut:
+![Confusion](image/accuracy.jpeg)
