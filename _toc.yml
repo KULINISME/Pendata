@@ -27,5 +27,7 @@ chapters:
       - file: data_preparation/decimal_scaling
 - file: tugas_wknn
 - file: UTS/home
-- file: naive_baiyes
-- file: dc_tree
+- file: TUGAS/naive_baiyes
+  sections:
+    - file: TUGAS/dc_tree
+    - file: TUGAS/rand_forest

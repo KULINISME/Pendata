@@ -38,13 +38,13 @@ Dataset kali ini saya menggunakan Golf Play Dataset Extended. Golf Play Dataset 
 
 ## Implementasi KNIME
 workflow ini dirancang untuk menggunakan tools knime dengan menggunakan bantuan Node Decision Tree Prediction
-![Confusion](image/wfk.jpeg)
+![Confusion](../image/wfk.jpeg)
 ### Partisi
 Saya melakukan untuk data training dan data tester dengan presentasi 70:30 sebagai berikut:
-![Confusion](image/predisi_dc.jpeg)
+![Confusion](../image/predisi_dc.jpeg)
 ### Decision Tree Laner atau DTL
 Pada Node DTL diperlukan column class saya menggunakan outlook sebagai class
-![Confusion](image/dc_pred.jpeg)
+![Confusion](../image/dc_pred.jpeg)
 ### Hitung 
 ## Perhitungan 
 # Perhitungan Gain Ratio — Dataset Golf Play (Target: Outlook)
@@ -368,7 +368,7 @@ $$
 **Root node terpilih: TotalPlayer\_binned** dengan Gain Ratio tertinggi $= 0.4251$
 ## Tree
 Berikut Hasil dari Tree:
-![Confusion](image/tree.jpeg)
+![Confusion](../image/tree.jpeg)
 ## Result
 Lalu untuk hasil didapatkan dengan prediction accuracynya adalah 1, sebagai berikut:
-![Confusion](image/accuracy.jpeg)
+![Confusion](../image/accuracy.jpeg)

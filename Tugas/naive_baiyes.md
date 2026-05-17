@@ -43,18 +43,18 @@ Setelah data melalui tahap normalisasi (encoding), langkah selanjutnya adalah me
 
 - 20% Data Testing: Dipakai buat ngetes model. Data ini tidak ikut dipakai saat belajar, jadi bisa lihat seberapa bagus model memprediksi data baru.
 
-![Confusion](image/partisi.jpeg)
+![Confusion](../image/partisi.jpeg)
 
 ## Implementasi K-NIME with
 Implementasi dilakukan menggunakan tools KNIME dengan memanfaatkan library scikit-learn untuk perhitungan metode Naive Bayes.
-![Confusion](image/knime.jpeg)
+![Confusion](../image/knime.jpeg)
 Berikut adalah implementasi alur kerja pada KNIME. Pada nodes Python Script dikonfigurasi dengan dua input port untuk memisahkan data training dan data testing:
 
 Port 1 (Atas): Menerima 80% data (820 baris) untuk proses Training.
-![Confusion](image/train.jpeg)
+![Confusion](../image/train.jpeg)
 
 Port 2 (Bawah): Menerima 20% data (205 baris) untuk proses Testing.
-![Confusion](image/test.jpeg)
+![Confusion](../image/test.jpeg)
 
 ```{code-cell} 
 :tags: [skip-execution]
@@ -94,6 +94,6 @@ knio.output_tables[0] = knio.Table.from_pandas(df_test)
 
 ## Hasil Prediksi dan Evaluasi Model
 Setelah dirunning mendapatkan hasil sebagai berikut:
-![Confusion](image/matrix.jpeg)
+![Confusion](../image/matrix.jpeg)
 Lalu untuk accuracy sebagai berikut:
-![Confusion](image/accuracy.jpeg)
+![Confusion](../image/accuracy.jpeg)
