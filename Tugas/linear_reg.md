@@ -44,6 +44,8 @@ Berikut adalah data yang digunakan dalam analisis:
 | 6  | 4 | 5 |
 | 7  | 5 | 6 |
 
+![Confusion](../image/data_linear.PNG)<br>
+
 **Jumlah observasi (n):** 7
 
 ---
@@ -190,7 +192,7 @@ R² = SSR / SST ≈ 0.54
 
 ### 6.1 Metode OLS Manual (NumPy)
 
-```python
+```{code-cell}
 import numpy as np
 
 X_raw = np.array([2, 4, 3, 3, 3, 4, 5])
@@ -211,18 +213,53 @@ print(f"β̂₁ (Koefisien) : {beta[1]:.4f}")
 
 ### 6.2 Metode scikit-learn
 
-```python
+```{code-cell}
+import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
+# 1. Menyiapkan Data
 X = np.array([2, 4, 3, 3, 3, 4, 5]).reshape(-1, 1)
 Y = np.array([2, 3, 5, 4, 3, 5, 6])
 
+# 2. Inisialisasi dan Melatih Model
 model = LinearRegression()
 model.fit(X, Y)
 
-print(f"β̂₀ : {model.intercept_:.4f}")
-print(f"β̂₁ : {model.coef_[0]:.4f}")
-print(f"R²  : {model.score(X, Y):.4f}")
+# Mendapatkan nilai intercept dan koefisien
+intercept = model.intercept_
+coef = model.coef_[0]
+
+print("Hasil Perhitungan menggunakan scikit-learn:")
+print("-" * 40)
+print(f"Intercept (Beta 0) : {intercept:.2f}")
+print(f"Koefisien (Beta 1) : {coef:.2f}")
+print(f"Persamaan Regresi  : Y = {intercept:.2f} + {coef:.2f}X")
+
+# 3. Membuat nilai prediksi Y untuk menggambar garis regresi
+# Ini akan menghitung titik-titik Y pada garis lurus berdasarkan X
+Y_pred = model.predict(X)
+
+# 4. Plotting Grafik
+plt.figure(figsize=(8, 5)) # Menentukan ukuran gambar
+
+# Membuat scatter plot untuk titik data asli (Aktual)
+plt.scatter(X, Y, color='blue', label='Data Aktual (Y)', zorder=5)
+
+# Membuat garis regresi linear
+plt.plot(X, Y_pred, color='red', linewidth=2, label=f'Garis Regresi (Y = {intercept:.2f} + {coef:.2f}X)')
+
+# Menambahkan judul dan label sumbu
+plt.title('Regresi Linear: Hubungan X dan Y')
+plt.xlabel('Variabel X')
+plt.ylabel('Variabel Y')
+
+# Menampilkan legenda dan grid (garis bantu)
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.7)
+
+# Menampilkan hasil plot ke layar
+plt.show()
 ```
 
 ---

@@ -133,7 +133,7 @@ knio.output_tables[0] = knio.Table.from_pandas(df)
 
 
 ### Testing - Python Scripting
-![Confusion](../image/testing_rand.jpeg)<br>
+![Confusion](../image/data_linear.PNG)<br>
 Model yang telah disimpan di-load kembali menggunakan pickle, lalu diterapkan pada data testing untuk menghasilkan prediksi.
 
 ```{code-cell} 
