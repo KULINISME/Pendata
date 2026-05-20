@@ -30,4 +30,5 @@ chapters:
 - file: Tugas/naive_baiyes
   sections:
     - file: Tugas/dc_tree
+    - file: Tugas/linear_reg
     - file: Tugas/rand_forest
