@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-## Linear Regression
+# Linear Regression
 ## 1. Pendahuluan
 
 Regresi linear sederhana adalah metode statistik yang digunakan untuk memodelkan hubungan linier antara satu variabel independen (X) dan satu variabel dependen (Y). Tujuan utamanya adalah menemukan garis lurus terbaik yang merepresentasikan pola hubungan tersebut dalam data.

@@ -33,3 +33,4 @@ chapters:
     - file: Tugas/linear_reg
     - file: Tugas/rand_forest
     - file: Tugas/no2_sp5
+    - file: Tugas/forecast
